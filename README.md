@@ -19,7 +19,15 @@ touch .env
 ```
 
 Edit the file so that it contains the following key/value pairs.
-The `env.example` file has been included as an example.
+
+```
+PORT=<PORT_NUMBER>
+PROJECT_PATH=/Users/<YOUR_USER_NAME>/<PROJECTS_DIRECTORY>
+SECRET=<SECRET_STRING>
+GITHUB_USER=<USERNAME_OF_PROJECTS_OWNER>
+GIT_SERVER=<GITHUB_SERVER_URL>
+BASE_IMAGE=<e.g.: node:lts-alpine3.9 *OR* balenalib/raspberry-pi-alpine-node>
+```
 
 The project path must point to the directory where you store your projects (e.g. /Users/pi/Projects).
 
@@ -29,11 +37,11 @@ The Raspberry Pi will also need a way to be accessible from the internet, this c
 
 Run the app:
 
-`development` > `docker-compose up --remove-orphans`
+`development` > `make dev`
 
-`production` > `docker-compose -f docker-compose.yaml up --remove-orphans`
+`production` > `make prod`
 
-`test` > `docker-compose -f docker-compose.yaml -f docker-compose.test.yaml up --remove-orphans`
+`test` > `make test`
 
 POST requests to `/event` will trigger the app to perform a `git pull` for the repo specified in `PROJECT_PATH`.
 
