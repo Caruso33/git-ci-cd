@@ -20,5 +20,8 @@
     "chai-http": "^4.3.0",
     "mocha": "^7.0.0",
     "nodemon": "^2.0.2"
+  },
+  "repository": {
+    "url": "https://github.com/Caruso33/raspberry-ci"
   }
 }

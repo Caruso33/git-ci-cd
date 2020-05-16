@@ -2,11 +2,12 @@ version: "3"
 services:
   raspberry-ci:
     container_name: node-app
-    build: 
+    build:
       context: ./server
       args:
         - port=${PORT}
         - env=${NODE_ENV:-"production"}
+        - base_image=${BASE_IMAGE:-"node:lts-alpine3.9"}
     ports:
       - ${PORT:-4000}:${PORT:-4000}
     volumes:

@@ -4,7 +4,7 @@ A simple express app for setting up continuous integration in a raspberry-pi pro
 
 ## Getting Set Up
 
-Clone this repo onto your Raspberry Pi and install: 
+Clone this repo onto your Raspberry Pi and install:
 
 ```
 git clone https://github.com/ian-antking/raspberry-ci.git
@@ -12,31 +12,36 @@ cd raspberry-ci
 npm install
 ```
 
-The express app requires a `.env` folder in the root of the repo: 
+The express app requires a `.env` folder in the root of the repo:
+
 ```
 touch .env
 ```
 
-Edit the file so that it contains the following key/value pairs:
-```
-PORT=8000
-PROJECT_PATH=/Users/<YOUR_USER_NAME>/<PROJECTS_DIRECTORY>
-GITHUB_USER=<USERNAME_OF_PROJECTS_OWNER>
-```
-The project path must point to the directory where you store your projects (e.g. /Users/pi/Projects). 
-
+Edit the file so that it contains the following key/value pairs.
 The `env.example` file has been included as an example.
 
-The Raspberry Pi will also need a way to be accessible from the internet, this can be down with port-forwarding, ngrox or localtunnel.
+The project path must point to the directory where you store your projects (e.g. /Users/pi/Projects).
+
+The Raspberry Pi will also need a way to be accessible from the internet, this can be down with port-forwarding, ngrok or localtunnel.
 
 ## Usage
 
 Run the app:
 
-```
-docker-compose up
-```
+`development` > `docker-compose up --remove-orphans`
+
+`production` > `docker-compose -f docker-compose.yaml up --remove-orphans`
+
+`test` > `docker-compose -f docker-compose.yaml -f docker-compose.test.yaml up --remove-orphans`
 
 POST requests to `/event` will trigger the app to perform a `git pull` for the repo specified in `PROJECT_PATH`.
 
 This can be combined with a github webhook so that any push events to your repo will cause that code to be integrated into your raspberry pi.
+
+## create a secret - node repl
+
+```
+const crypto = require('crypto')
+crypto.randomBytes(32).toString('hex')
+```
