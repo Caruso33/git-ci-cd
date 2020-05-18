@@ -1,14 +1,16 @@
-# Raspberry-CI
+# Git-CI/CD
+
+Fork of https://github.com/ian-antking/raspberry-ci
 
 A simple express app for setting up continuous integration in a raspberry-pi project.
 
 ## Getting Set Up
 
-Clone this repo onto your Raspberry Pi and install:
+Clone this repo onto your server and install:
 
 ```
-git clone https://github.com/ian-antking/raspberry-ci.git
-cd raspberry-ci
+git clone https://github.com/Caruso33/git-ci-cd
+cd git-ci-cd
 npm install
 ```
 
@@ -31,7 +33,7 @@ BASE_IMAGE=<e.g.: node:lts-alpine3.9 *OR* balenalib/raspberry-pi-alpine-node>
 
 The project path must point to the directory where you store your projects (e.g. /Users/pi/Projects).
 
-The Raspberry Pi will also need a way to be accessible from the internet, this can be down with port-forwarding, ngrok or localtunnel.
+The server will also need a way to be accessible from the internet, this can be down with port-forwarding, ngrok or localtunnel.
 
 ## Usage
 
@@ -45,7 +47,7 @@ Run the app:
 
 POST requests to `/event` will trigger the app to perform a `git pull` for the repo specified in `PROJECT_PATH`.
 
-This can be combined with a github webhook so that any push events to your repo will cause that code to be integrated into your raspberry pi.
+This can be combined with a github webhook so that any push events to your repo will cause that code to be integrated into your server.
 
 ## create a secret - node repl
 

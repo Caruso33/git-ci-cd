@@ -1,9 +1,16 @@
 version: "3"
 services:
-  raspberry-ci:
+  git-ci-cd:
     command: npm test
+    # command: ${npm_cmd:-"./server && npm test"}
+    build:
+      args:
+        - port=${PORT}
+        - env=development
+    environment:
+      - NODE_ENV=development
     env_file: .env.test
-    depends_on: 
+    depends_on:
       - mock-git-server
 
   mock-git-server:
@@ -13,4 +20,5 @@ services:
     env_file: .env.test
     ports:
       - 8174:8174
-    command: ./node_modules/.bin/git-http-mock-server 
+    command: ./node_modules/.bin/git-http-mock-server
+

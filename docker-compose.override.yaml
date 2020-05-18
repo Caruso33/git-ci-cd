@@ -1,6 +1,10 @@
 version: "3"
 services:
-  raspberry-ci:
+  git-ci-cd:
+    build:
+      args:
+        - port=${PORT}
+        - env=development
     environment: 
       - NODE_ENV=development
     volumes:

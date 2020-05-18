@@ -1,5 +1,0 @@
-file: ./mocha.config.js
-recursive: true
-colors: true
-reporter: spec
-ui: bdd

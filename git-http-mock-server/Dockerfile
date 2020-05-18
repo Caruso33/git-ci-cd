@@ -1,5 +1,6 @@
+ARG base_image=$base_image
 
-FROM balenalib/raspberry-pi-alpine-node
+FROM $base_image
 
 RUN apk update && apk upgrade && \
     apk add --no-cache bash git openssh

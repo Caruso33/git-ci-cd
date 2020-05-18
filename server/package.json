@@ -1,14 +1,15 @@
 {
-  "name": "raspi-ci",
+  "name": "git-ci-cd",
   "version": "1.0.0",
   "description": "An express app for receiving webhooks from github",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/**/*.test.js",
+    "test": "jest",
+    "test:watch": "jest -- --watch",
     "dev": "nodemon -r dotenv/config index.js",
     "start": "node -r dotenv/config index.js"
   },
-  "author": "Ian King",
+  "author": "Tobias Leinss, fork of Ian King",
   "license": "ISC",
   "dependencies": {
     "crypto": "^1.0.1",
@@ -16,12 +17,11 @@
     "dotenv": "^8.2.0"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
-    "chai-http": "^4.3.0",
-    "mocha": "^7.0.0",
-    "nodemon": "^2.0.2"
+    "jest": "^26.0.1",
+    "nodemon": "^2.0.4",
+    "supertest": "^4.0.2"
   },
   "repository": {
-    "url": "https://github.com/Caruso33/raspberry-ci"
+    "url": "https://github.com/Caruso33/git-ci-cd"
   }
 }
